@@ -1,0 +1,51 @@
+@using WebMatrix.Data
+
+@{
+    Page.Title = "Cadastro de Usuarios";
+
+
+    int result = 1;
+
+    if (IsPost)
+    {
+        var db = Database.Open("DbLogin");
+
+        result = db.Execute("insert into Usuario (Email, Senha ) values ( @1, @2)",
+             
+             Request.Form["Email"],
+             Request.Form["Senha"]);
+
+        if (result == 1)
+        {
+            Response.Redirect("~/Views/listaDeUsuarios.cshtml");
+        }
+
+        db.Close();
+    }
+
+}
+<head>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+</head>
+<body>
+
+    <style>
+        .container {
+            padding-left: 45%;
+            padding-right: 45%;
+        }
+    </style>
+    <form action="" method="post" class="panel container">
+        
+        Email de login
+        <br /> <input name="Email" type="text" value="" placeholder="Digite Email" required="required" />
+        <br />
+        <br />
+        Senha
+        <br /> <input name="Senha" type="text" value="" placeholder="Digite a senha" required="required" />
+
+
+        <button class="btn btn-primary" type="button" name="Enviar" value="">Cadastrar</button>
+    </form>
+</body>
