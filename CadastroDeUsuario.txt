@@ -46,6 +46,6 @@
         <br /> <input name="Senha" type="text" value="" placeholder="Digite a senha" required="required" />
 
 
-        <button class="btn btn-primary" type="button" name="Enviar" value="">Cadastrar</button>
+        <button class="btn btn-primary" type="submit" name="Enviar" value="">Cadastrar</button>
     </form>
 </body>
