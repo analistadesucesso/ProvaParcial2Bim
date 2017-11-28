@@ -10,8 +10,8 @@
     {
         var db = Database.Open("DbLogin");
 
-        result = db.Execute("insert into Usuario (Email, Senha ) values ( @1, @2)",
-             
+        result = db.Execute("insert into Usuario (Nome,Email, Senha ) values (@0, @1, @2)",
+             Request.Form["Nome"],
              Request.Form["Email"],
              Request.Form["Senha"]);
 
@@ -37,7 +37,10 @@
         }
     </style>
     <form action="" method="post" class="panel container">
-        
+            Nome do Usuario
+        <br /><input name="Nome" type="text" value="" placeholder="Digite seu nome" required="required" />
+        <br />
+        <br />
         Email de login
         <br /> <input name="Email" type="text" value="" placeholder="Digite Email" required="required" />
         <br />
